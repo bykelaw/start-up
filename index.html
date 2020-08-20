@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <style>
+    :root {
+      box-sizing: border-box;
+      --nav-color: #002c65;
+      --border-cor1: #e7e7e7;
+      --text-cor2:#424242;
+      font-family: sans-serif;
+      color: var(--nav-color);
+      --bgc: #f7f7f7;
+    }
+
+    *,
+    ::before,
+    ::after {
+      box-sizing: inherit;
+
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: var(--bgc);
+    }
+
+    .nav-contain {
+      background-color: white;
+      display: grid;
+      font-size: 12px;
+      grid-template-columns: 1fr auto auto;
+      grid-gap: 3em;
+      padding: 1.5em 3em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .nav-contain2 {
+      position: sticky;
+      top: 0;
+    }
+
+    .nav-contain-low {
+      background-color: white;
+      font-size: 18px;
+      font-weight: 500;
+      display: grid;
+      grid-template-columns: repeat(7, minmax(auto, 1fr)) minmax(auto, 2fr) minmax(auto, 1fr);
+      list-style: none;
+      grid-gap: 1em;
+    }
+
+    .nav-contain-low>:last-child,
+    .nav-contain-low>:nth-child(8) {
+      font-size: 14px;
+      align-self: center;
+    }
+
+    .nav-contain-low>:nth-child(8) {
+      display: grid;
+      justify-self: end;
+      grid-template-columns: repeat(3, auto);
+      grid-gap: 0.5em;
+
+    }
+
+    .dpdw span {
+      text-align: center;
+      padding: 0.72em 0.2em;
+      border-top-right-radius: 0.5em;
+      border-top-left-radius: 0.5em;
+      /* height: 2em; */
+      position: relative;
+      display: block;
+    }
+
+    .dpdw:hover span {
+      background-color: var(--nav-color);
+      color: white;
+    }
+
+    .dpdw:hover .dpdw--col3,
+    .dpdw:hover .dpdw--col2,
+    .dpdw:hover .dpdw--col1 {
+      border-top: 0.16em solid var(--nav-color);
+      transition: all 0.5s;
+      height: 23em;
+
+
+    }
+
+    .dpdw--col3 {
+      position: absolute;
+      height: 0;
+      display: grid;
+      grid-template-columns: auto auto 1fr;
+      grid-gap: 3em;
+      overflow: hidden;
+      background-color: white;
+      left: 0;
+      right: 0
+    }
+
+    .dpdw--col3>ul>li,
+    .dpdw--col2>ul>li,
+    .dpdw--col1>li {
+      padding: 1em 1.5em;
+      font-size: 16px;
+    }
+
+    .dpdw--col3>ul>li:first-child,
+    .dpdw--col2>ul>li:first-child,
+    .dpdw--col1>li:first-child {
+      font-size: 18px;
+      border-bottom: 0.1em solid var(--border-cor1);
+    }
+
+    .dpdw--col2 {
+      position: absolute;
+      height: 0;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      grid-gap: 3em;
+      overflow: hidden;
+      background-color: white;
+      z-index: 3;
+      left: 0;
+      right: 0;
+      margin: 0;
+    }
+
+    .dpdw--col1 {
+      position: absolute;
+      height: 0;
+      display: grid;
+      grid-template-columns: auto;
+      overflow: hidden;
+      background-color: white;
+      left: 0;
+      right: 0;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: block;
+    }
+
+    h1,
+    h6 {
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 60px;
+    }
+
+    h3 {
+      margin-top: 0;
+      font-size: 30px;
+    }
+
+    .banner--ctn,.section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      height: calc(100vh - 50px);
+      /* background-color:blue; */
+      padding: 3.5em;
+    }
+
+    .banner--lt,
+    .banner--rt,.section--sub {
+      background-color: var(--nav-color);
+      color: white;
+      padding: 2em;
+      font-size: 22px;
+    }
+
+    .dwld--app {
+      text-align: center;
+      font-size: 50px;
+      margin: auto 3em;
+    }
+
+    .dwld--btn {
+      display: grid;
+      justify-content: center;
+      grid-template-columns: auto auto;
+      grid-gap: 0.5em;
+      font-size: 50px;
+      margin: 2em 3em;
+
+    }
+
+    .dwld--btn>button {
+      display: grid;
+      background-color: black;
+      color: white;
+      border-radius: 1em;
+      padding: 0.5em 1em;
+    }
+
+    .dwld--btn>button>:last-child {
+      font-size: 2em;
+      font-weight: 600;
+    }
+.sect--1to6{
+display: grid;
+grid-template-columns: 1fr 1fr 1fr;
+/* background-color:blue; */
+padding: 3.5em;
+}
+.section--tl{
+  grid-column: 1 / -1;
+  text-align: center;
+}
+h3{
+  text-align: center;
+}
+.footer-top{
+  display: grid;
+  grid-template-columns: minmax(20px,100px) 1fr repeat(4,minmax(20px,50px));
+  height: 120px;
+  margin: 0 1.5em;
+  padding: 1em;
+  align-items: center;
+  grid-gap: 1em;
+}
+.footer-top>:not(:nth-child(2)){
+  background-color: var(--border-cor1);
+  height: 100px;
+}
+.footer-top>:nth-child(2)>h3{
+  text-align: left ;
+}
+.footer-btm{
+  display: grid;
+  grid-template-columns: repeat(6,1fr);
+  grid-template-rows: 1f;
+  padding: 2em;
+  height: calc(100vh - 50px);
+}
+.footer-btm>ul{
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows:  repeat(auto-fill,2.5em);
+  font-size: 14px;
+}
+.footer-btm>ul>li:not(:first-child){
+  color: var(--text-cor2);
+}
+.footer-btn--low{
+  grid-column: 1 / -1;
+  margin-top:6em;
+  display: grid;
+  grid-template-columns: repeat(6,auto) 1fr repeat(3,auto) ;
+  font-size: 14px;
+  grid-gap: 1em;
+  color: var(--text-cor2);
+  padding-top: 3.5em;
+  border-top: 0.1em solid var(--border-cor1);
+}
+.footer-btn--low>:last-child{
+  display: grid;
+  align-content: start;
+  grid-gap: 0.5em;
+
+}
+img{
+  width: 100%;
+  height: 100%;
+}
+  </style>
+  <div class="nav-contain">
+    <nav>Zeenlux</nav>
+    <nav>Specifier</nav>
+    <nav>Trade</nav>
+  </div>
+  <div class="nav-contain2">
+    <ul class="nav-contain-low">
+      <li class="dpdw work"><span>Colour</span>
+        <ul>
+          <li class="dpdw--col3">
+            <ul>
+              <li>Overview</li>
+              <li>White</li>
+              <li>Neutrals</li>
+              <li>Greys</li>
+              <li>Browns</li>
+              <li>Pinks & Purple</li>
+            </ul>
+            <ul>
+              <li>All Colours</li>
+              <li>Blues</li>
+              <li>Greens</li>
+              <li>Yellows</li>
+              <li>Oranges</li>
+              <li>Red</li>
+            </ul>
+            <ul>
+              <li>2020 Colour Forecast</li>
+              <li>Exterior Colours</li>
+              <li>Interior Colours</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li class="dpdw"><span>Inspiration</span>
+        <ul>
+          <li class="dpdw--col2">
+            <ul>
+              <li>Overview</li>
+              <li>Seasonal Colour Trends</li>
+              <li>Three Birds Renovations</li>
+              <li>Julia Green</li>
+              <li>The Design Files</li>
+              <li>Inspiration Gallery</li>
+              <li>#ZeenluxDIY</li>
+            </ul>
+            <ul>
+              <li>Colour Forcast - Essence</li>
+              <li>Trend: Indulge</li>
+              <li>Trend: Cultivate</li>
+              <li>Trend: Comeback</li>
+              <li>Trend: Grounded</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li class="dpdw"> <span>Products</span>
+        <ul>
+          <li class="dpdw--col2">
+            <ul>
+              <li>View All Products</li>
+              <li>All interior</li>
+              <li>All exterior</li>
+              <li>Preparation</li>
+              <li>Spray Paint</li>
+              <li>Effects</li>
+              <li>Doors, Windows, Trims</li>
+              <li>Ceiling</li>
+            </ul>
+            <ul>
+              <li>View All Brands</li>
+              <li>Wash&Wear</li>
+              <li>Weathershield</li>
+              <li>Duramax</li>
+              <li>Renovation Range</li>
+              <li>Design Effects</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li class="dpdw"> <span>Services</span>
+        <ul class="dpdw--col1">
+          <li>Find a Painter</li>
+          <li>Zeenlux Services</li>
+          <li>Zeenlux Colour Designers</li>
+          <li>Zeenlux Accredited Painter</li>
+          <li>Zeenlux Help & Advice</li>
+          <li>Paint Calculator</li>
+          <li>Zeenlux Colour App</li>
+        </ul>
+      </li>
+      <li class="dpdw"> <span>How to</span>
+        <ul class="dpdw--col1">
+          <li>Overview</li>
+          <li>Painting and Preparation Guides</li>
+          <li>Project Guildes</li>
+          <li>How To Use Colour</li>
+          <li>Tips and Techniques</li>
+        </ul>
+      </li>
+      <li class="dpdw"><span>Find a store</span></li>
+      <li class="dpdw"><span>Shop</span></li>
+      <li>
+        <div>Blank</div>
+        <div>Blank</div>
+        <div>Blank</div>
+      </li>
+      <div>Join/Sign in</div>
+    </ul>
+  </div>
+  <h6>SERVICES</h6>
+  <h1>Zeeelux Colour App</h1>
+  <div class="banner--ctn">
+    <div class="banner--lt">
+      <h3>The easy way to visualise colour in your home</h3>
+      <p>The new Zeenlux Colour App is the ideal tool to help see how colour can create impact, softness or transform a
+        space in your home before you even lift a brush.</p>
+    </div>
+    <div class="banner--rt"></div>
+  </div>
+  <h2 class="dwld--app">Download the Zeenlux Colour app on Android or iOS today
+  </h2>
+  <div class="dwld--btn">
+    <button>
+      <span>get it on</span>
+      <span>Google Play</span>
+    </button>
+    <button>
+      <span>Download on the </span>
+      <span>App Store</span>
+    </button>
+  </div>
+  <div class="sections">
+    <div class="section">
+      <div class="section--sub">Visualise your colour
+        Select a photo of your room and use Zeenlux colour to virtually paint the area. This will give you an idea of what
+        the finished project will look like and help bring your paint project to life. You can get started with our
+        preloaded most popular colours palettes.
+
+        Remember to consider the lighting, avoid shadows and try to use natural light, this will play a big factor in
+        how the colours are displayed in your room.</div>
+      <div class="section--sub"><img src="images/visualize.png" alt="Pictures"></div>
+    </div>
+    <div class="section">
+      <div class="section--sub"><img src="images/match.png" alt="Pictures"></div>
+      <div class="section--sub">Match your colour
+        Zeenlux Colour allows you to sample a part of a photo and see the closest digital match from over 1,100 colours in
+        the Zeenlux range. From there you can save the colour and use it in your colour schemes.</div>
+    </div>
+    <div class="section">
+      <div class="section--sub">Browse Zeenlux colours
+        Zeenlux Colour allows you to browse through the entire Zeenlux range of colour from the ease of your phone. Select
+        colours and add them to your palettes to test them in your home.</div>
+      <div class="section--sub"><img src="images/brows.png" alt="Pictures"></div>
+    </div>
+    <div class="section sect--1to6">
+      <h3 class="section--tl">
+        Zeenlux Visualiser Features
+      </h3>
+      <div class="section--1to6">
+        Visualise Zeenlux colour on your walls</div>
+      <div class="section--1to6">
+        Match colours in your home</div>
+        <div class="section--1to6">Browse Zeenlux colours while viewing your room</div>
+        <div class="section--1to6">
+        Save your project and share with family or friends</div>
+        <div class="section--1to6">Compare and view multiple schemes</div>
+      <div class="section--1to6">while viewing your room
+        
+        Save your project and share with family or friends
+        
+        Compare and view multiple schemes
+        
+        Locate your nearest Zeenlux retailer</div>
+      </div>
+  </div>
+  <h3>Download the Zeenlux Colour app on Android or iOS today
+  </h3>
+  <div class="dwld--btn">
+    <button>
+      <span>get it on</span>
+      <span>Google Play</span>
+    </button>
+    <button>
+      <span>Download on the </span>
+      <span>App Store</span>
+    </button>
+  </div>
+  <div class="footer-top">
+    <div class="footer-top--elmt">Some kind of image</div>
+    <div class="footer-top--elmt"> <h3>
+      Worth doing, worth Zeeelux.®
+    </h3></div>
+    <div class="footer-top--elmt"></div>
+    <div class="footer-top--elmt"></div>
+    <div class="footer-top--elmt"></div>
+    <div class="footer-top--elmt"></div>
+  </div>
+  <div class="footer-btm">
+    <ul>
+      <li>Colour</li>
+      <li>Whites & Neutrals</li>
+      <li>Greys</li>
+      <li>Browns</li>
+      <li>Purples & Pinks</li>
+      <li>Blues</li>
+      <li>Colour Wall</li>
+      <li>Design Effects Range</li>
+      <li>Colour Forecast</li>
+    </ul>
+    <ul>
+      <li>Products</li>
+      <li>Interior</li>
+      <li>Exterior</li>
+      <li>Enamels</li>
+      <li>Effects</li>
+      <li>Accessories</li>
+      <li>Sprays</li>
+      <li>Safety Data Sheets</li>
+    </ul>
+    <ul>
+      <li>Our brands</li>
+      <li>Renovation Range</li>
+      <li>Wash&Wear</li>
+      <li>Weathershield</li>
+      <li>Duramax</li>
+      <li>Metalshield</li>
+      <li>RapidFinish</li>
+      <li>Render Refresh</li>
+      <li>Precision</li>
+      <li>Design Effects</li>
+    </ul>
+    <ul>
+      <li>Inspiration</li>
+      <li>United by style</li>
+      <li>The Grace Tales</li>
+      <li>Norsu Interiors</li>
+      <li>Inspiration gallery</li>
+      <li>The Design Files</li>
+      <li>Three Birds Renovations</li>
+    </ul>
+    <ul>
+      <li>Services</li>
+      <li>Zeenlux Colour Designers</li>
+      <li>Find a Painter</li>
+      <li>Accredited Painters</li>
+    </ul>
+    <ul>
+      <li>How to</li>
+      <li>Project guides</li>
+      <li>Tips & Techniques</li>
+      <li>Preparation & painting guide</li>
+      <li>Paint problem solver</li>
+      <li>How to use colour</li>
+    </ul>
+    <div class="footer-btn--low">
+      <div>Contact us</div>
+      <div> News & Media</div>
+      <div> Careers</div>
+      <div> Colour accuracy</div>
+      <div> COVID-19 Update</div>
+      <div>© 2019 Zeenlux </div>
+      <div>Privacy policy </div>
+      <div>Corporate info </div>
+      <div>Recommended sites</div>
+      <div>
+        <span>Site terms</span> 
+        <span>Site map</span>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
